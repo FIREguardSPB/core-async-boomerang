@@ -6,6 +6,7 @@ const Hero = require('./game-models/Hero');
 const Enemy = require('./game-models/Enemy');
 // const Boomerang = require('./game-models/Boomerang');
 const View = require('./View');
+const Boomerang = require('./game-models/Boomerang');
 
 // Основной класс игры.
 // Тут будут все настройки, проверки, запуск.
@@ -13,7 +14,7 @@ const View = require('./View');
 class Game {
   constructor({ trackLength }) {
     this.trackLength = trackLength;
-    this.hero = new Hero({position: 0}); // Герою можно аргументом передать бумеранг.
+    this.hero = new Hero(new Boomerang()); // Герою можно аргументом передать бумеранг.
     this.enemy = new Enemy({position: this.trackLength});
     this.view = new View();
     this.track = [];
@@ -26,24 +27,31 @@ class Game {
     this.track = (new Array(this.trackLength)).fill(' ');
     this.track[this.hero.position] = this.hero.skin;
     this.track[this.enemy.position] = this.enemy.skin;
+    this.track[this.hero.boomerang.position + 1] = this.hero.boomerang.skin;
   }
 
   check() {
     if (this.hero.position === this.enemy.position) {
       this.hero.die();
+     }  else if (this.hero.boomerang.position === this.enemy.position){
+      this.enemy.die(this.trackLength)
     }
   }
 
   play() {
+     
     setInterval(() => {
       // Let's play!
       this.check();
       this.regenerateTrack();
+      this.enemy.moveLeft();
+      this.hero.boomerang.fly(this.hero.boomerang.position, this.enemy.position)
       this.view.render(this.track);
-    });
+    },400);
+
+    
   }
 }
-
 
 
 module.exports = Game;
