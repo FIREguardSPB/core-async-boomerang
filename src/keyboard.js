@@ -19,7 +19,7 @@ const keypress = require('keypress');
 
 // // Какая-то функция.
 
-function runInteractiveConsole(hero, boomerang, fly) {
+function runInteractiveConsole(hero, boomerang) {
   const keyboard = {
     q: () => hero.moveLeft(),
     w: () => hero.moveRight(),

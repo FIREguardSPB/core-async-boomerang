@@ -41,12 +41,10 @@ class Game {
       // Let's play!
       this.regenerateTrack();
       this.check();
-      
-      runInteractiveConsole(this.hero, this.boomerang, this.fly)
-      this.view.render(this.track);
-      
-    }, 500);
+      this.view.render(this.track);    
+    }, 10);
     console.log(this.position)
+    runInteractiveConsole(this.hero, this.boomerang)
   }
 }
 
