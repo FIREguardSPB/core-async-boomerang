@@ -23,7 +23,7 @@ function runInteractiveConsole(hero, boomerang) {
   const keyboard = {
     q: () => hero.moveLeft(),
     w: () => hero.moveRight(),
-    e: () => hero.attack(),
+    e: () => boomerang.moveRight(),
     // r: () => console.log('r'),
     // t: () => console.log('t'),
     // y: () => console.log('y'),

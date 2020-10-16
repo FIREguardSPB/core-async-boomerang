@@ -8,9 +8,16 @@ class Boomerang {
     this.position = 0;
   }
 
-  fly() {
-    this.moveRight();
-    this.moveLeft();
+  fly(bomPosition, enPositon ) {
+    if(bomPosition <= enPositon){
+      this.moveRight();
+      
+    } else{
+      this.moveLeft();
+    }
+    
+
+    
   }
 
   moveLeft() {

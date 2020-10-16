@@ -16,9 +16,11 @@ class Enemy {
     this.position -= 1;
   }
 
-  die() {
-    this.position = '?';
+  die(position) {
+    this.position = position;
     console.log('Enemy is dead!');
+    process.exit();
+    
   }
 }
 
