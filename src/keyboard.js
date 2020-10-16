@@ -19,11 +19,11 @@ const keypress = require('keypress');
 
 // // Какая-то функция.
 
-function runInteractiveConsole(hero, boomerang) {
+function runInteractiveConsole(hero, boomerang, enemy) {
   const keyboard = {
     q: () => hero.moveLeft(),
     w: () => hero.moveRight(),
-    e: () => boomerang.moveRight(),
+    e: async () => boomerang.fly(boomerang.position, enemy.position),
     // r: () => console.log('r'),
     // t: () => console.log('t'),
     // y: () => console.log('y'),
