@@ -23,8 +23,7 @@ class Boomerang {
 
   moveRight() {
     // Идём вправо.
-
-      this.position += 1;
+this.position += 1;
     
   }
 }
